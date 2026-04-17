@@ -15,8 +15,9 @@ export default function AnnouncementBanner() {
       .limit(1)
       .single()
       .then(({ data }) => {
-        if (data?.synced_at) {
-          const d = new Date(data.synced_at)
+        const row = data as { synced_at: string } | null
+        if (row?.synced_at) {
+          const d = new Date(row.synced_at)
           setLastSynced(
             d.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' }) +
             ' at ' +
