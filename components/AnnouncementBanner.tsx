@@ -1,23 +1,22 @@
 'use client'
 
 import { useState, useEffect } from 'react'
-import { supabase } from '@/lib/supabase'
+import { getSupabase } from '@/lib/supabase'
 
 export default function AnnouncementBanner() {
   const [dismissed, setDismissed] = useState(false)
   const [lastSynced, setLastSynced] = useState<string | null>(null)
 
   useEffect(() => {
-    supabase
+    getSupabase()
       .from('recalls')
       .select('synced_at')
       .order('synced_at', { ascending: false })
       .limit(1)
       .single()
       .then(({ data }) => {
-        const row = data as { synced_at: string } | null
-        if (row?.synced_at) {
-          const d = new Date(row.synced_at)
+        if (data?.synced_at) {
+          const d = new Date(data.synced_at)
           setLastSynced(
             d.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' }) +
             ' at ' +

@@ -1,24 +1,11 @@
 import { createClient } from '@supabase/supabase-js'
 
-// Lazy client — created on first use, not at module load time
-let _supabase: ReturnType<typeof createClient> | null = null
-
 export function getSupabase() {
-  if (!_supabase) {
-    _supabase = createClient(
-      process.env.NEXT_PUBLIC_SUPABASE_URL!,
-      process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
-    )
-  }
-  return _supabase
+  return createClient(
+    process.env.NEXT_PUBLIC_SUPABASE_URL!,
+    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
+  )
 }
-
-// Keep named export for any existing direct usage
-export const supabase = new Proxy({} as ReturnType<typeof createClient>, {
-  get(_, prop) {
-    return (getSupabase() as never)[prop]
-  },
-})
 
 export function createServiceClient() {
   return createClient(
