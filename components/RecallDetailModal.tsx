@@ -20,7 +20,7 @@ export default function RecallDetailModal({ recall, onClose }: Props) {
     if (!content) return null
     return (
       <div className="space-y-1">
-        <h3 className="text-xs font-semibold uppercase tracking-wider text-gray-400">{title}</h3>
+        <h3 className="text-xs font-bold uppercase tracking-wider" style={{ color: '#1B2A4A' }}>{title}</h3>
         <p className="text-sm text-gray-700 leading-relaxed">{content}</p>
       </div>
     )

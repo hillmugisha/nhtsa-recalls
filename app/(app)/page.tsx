@@ -4,7 +4,6 @@ import { useState, useEffect, useCallback } from 'react'
 import Sidebar from '@/components/Sidebar'
 import RecallsTable from '@/components/RecallsTable'
 import Pagination from '@/components/Pagination'
-import ExportButton from '@/components/ExportButton'
 import { Recall } from '@/lib/types'
 
 interface Filters {
@@ -58,14 +57,6 @@ export default function HomePage() {
       <Sidebar onSearch={handleSearch} />
 
       <div className="flex-1 flex flex-col min-w-0">
-        {/* Toolbar */}
-        <div className="flex items-center justify-between px-6 py-3 bg-white border-b border-gray-200">
-          <h2 className="text-base font-semibold text-gray-800">
-            {loading ? 'Loading...' : `${count.toLocaleString()} Recall${count !== 1 ? 's' : ''} Found`}
-          </h2>
-          <ExportButton filters={filters} />
-        </div>
-
         {/* Table */}
         <div className="flex-1 overflow-auto bg-white">
           {loading ? (
@@ -77,7 +68,7 @@ export default function HomePage() {
               Loading recalls...
             </div>
           ) : (
-            <RecallsTable recalls={recalls} />
+            <RecallsTable recalls={recalls} filters={filters} count={count} />
           )}
         </div>
 

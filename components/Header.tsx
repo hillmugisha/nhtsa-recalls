@@ -1,6 +1,5 @@
 import Link from 'next/link'
 import Image from 'next/image'
-import HeaderUserInfo from './HeaderUserInfo'
 
 const NHTSA_URL =
   'https://www.nhtsa.gov/recalls?utm_source=google&utm_medium=search&utm_campaign=safecarssavelives2025-2026&gad_source=1&gad_campaignid=23383552240&gbraid=0AAAAAoa-qF2sKHJK44pmW2d2OilwXsexB&gclid=Cj0KCQiAvtzLBhCPARIsALwhxdoxb3IkUYslqXfAgtghSU607l4uxerX7dTlN20wq2p4VChi5XI5wQIaAguqEALw_wcB'
@@ -36,7 +35,6 @@ export default function Header() {
         >
           NHTSA - Recalls
         </Link>
-        <HeaderUserInfo />
       </nav>
     </header>
   )

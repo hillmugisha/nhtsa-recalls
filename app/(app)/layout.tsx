@@ -6,10 +6,10 @@ import AnnouncementBanner from '@/components/AnnouncementBanner'
 
 export default function AppLayout({ children }: { children: React.ReactNode }) {
   return (
-    <div className="min-h-full flex flex-col bg-gray-50 text-gray-900">
+    <div className="h-full flex flex-col bg-gray-50 text-gray-900">
       <AnnouncementBanner />
       <Header />
-      <main className="flex flex-1">{children}</main>
+      <main className="flex flex-1 min-h-0">{children}</main>
       <Footer />
     </div>
   )
