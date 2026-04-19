@@ -23,6 +23,7 @@ function toTitleCase(str: string): string {
     .replace(/\b\w/g, c => c.toUpperCase())
     .replace(/\bGm\b/g, 'GM')
     .replace(/\bNhtsa\b/g, 'NHTSA')
+    .replace(/\bEv\b/g, 'EV')
 }
 
 function parseDate(raw: string | undefined): string | null {
