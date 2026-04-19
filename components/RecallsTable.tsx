@@ -85,16 +85,19 @@ export default function RecallsTable({ recalls, filters, count }: Props) {
     window.addEventListener('mouseup', onMouseUp)
   }, [colWidths])
 
-  const totalWidth = CHECKBOX_WIDTH + DETAILS_WIDTH + colWidths.reduce((a, b) => a + b, 0)
+  const totalWidth     = CHECKBOX_WIDTH + DETAILS_WIDTH + colWidths.reduce((a, b) => a + b, 0)
+  const selectedRecalls = recalls.filter(r => selectedIds.has(r.id))
 
   return (
     <>
       {/* Table toolbar */}
-      <div className="flex items-center justify-between px-6 py-3 bg-white border-b border-gray-200">
-        <h2 className="text-base font-semibold text-gray-800">
+      <div className="flex items-center justify-between gap-3 px-4 sm:px-6 py-3 bg-white border-b border-gray-200">
+        <h2 className="text-sm sm:text-base font-semibold text-gray-800 min-w-0 truncate">
           {count.toLocaleString()} Recall{count !== 1 ? 's' : ''} Found
         </h2>
-        <ExportButton filters={filters} />
+        <div className="shrink-0">
+          <ExportButton filters={filters} selectedRecalls={selectedRecalls} totalCount={count} />
+        </div>
       </div>
 
       {recalls.length === 0 ? (

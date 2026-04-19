@@ -6,9 +6,9 @@ const NHTSA_URL =
 
 export default function Header() {
   return (
-    <header className="flex items-center px-6 py-1.5 shadow-md" style={{ backgroundColor: 'var(--navy)' }}>
+    <header className="flex items-center px-4 sm:px-6 py-1.5 shadow-md" style={{ backgroundColor: 'var(--navy)' }}>
       {/* Logo */}
-      <div className="shrink-0 mr-4">
+      <div className="shrink-0 mr-3">
         <Image
           src="/logo.png"
           alt="Pritchard Commercial"
@@ -21,19 +21,19 @@ export default function Header() {
       </div>
 
       {/* Title */}
-      <div className="flex-1 text-center">
-        <h1 className="text-white font-bold text-xl tracking-wide">NHTSA Vehicle Recalls</h1>
+      <div className="flex-1 min-w-0 text-center px-2">
+        <h1 className="text-white font-bold text-base sm:text-xl tracking-wide truncate">NHTSA Vehicle Recalls</h1>
       </div>
 
       {/* Nav */}
-      <nav className="shrink-0 flex items-center gap-3">
+      <nav className="shrink-0 flex items-center">
         <Link
           href={NHTSA_URL}
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-block px-4 py-1.5 rounded border border-white text-white text-sm font-medium hover:bg-white hover:text-[#1B2A4A] transition-colors"
+          className="inline-block px-3 sm:px-4 py-1.5 rounded border border-white text-white text-xs sm:text-sm font-medium hover:bg-white hover:text-[#1B2A4A] transition-colors whitespace-nowrap"
         >
-          NHTSA - Recalls
+          <span className="hidden sm:inline">NHTSA - </span>Recalls
         </Link>
       </nav>
     </header>

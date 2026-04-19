@@ -33,11 +33,11 @@ export default function RecallDetailModal({ recall, onClose }: Props) {
       onClick={onClose}
     >
       <div
-        className="bg-white rounded-xl shadow-2xl w-full max-w-2xl max-h-[85vh] flex flex-col"
+        className="bg-white rounded-xl shadow-2xl w-full max-w-2xl max-h-[90vh] sm:max-h-[85vh] flex flex-col"
         onClick={e => e.stopPropagation()}
       >
         {/* Header */}
-        <div className="flex items-start justify-between px-6 py-5 border-b border-gray-100">
+        <div className="flex items-start justify-between px-4 sm:px-6 py-4 sm:py-5 border-b border-gray-100">
           <div>
             <div className="flex items-center gap-2 mb-1">
               <span className="text-xs font-mono bg-blue-50 text-blue-700 px-2 py-0.5 rounded font-semibold">
@@ -73,7 +73,7 @@ export default function RecallDetailModal({ recall, onClose }: Props) {
         </div>
 
         {/* Meta row */}
-        <div className="flex gap-6 px-6 py-3 bg-gray-50 border-b border-gray-100 text-xs text-gray-500">
+        <div className="flex flex-wrap gap-3 sm:gap-6 px-4 sm:px-6 py-3 bg-gray-50 border-b border-gray-100 text-xs text-gray-500">
           {recall.manufacturer_name && <span><span className="font-medium text-gray-600">Manufacturer:</span> {recall.manufacturer_name}</span>}
           {recall.report_received_date && <span><span className="font-medium text-gray-600">Report Date:</span> {recall.report_received_date}</span>}
           {recall.potential_units_affected && <span><span className="font-medium text-gray-600">Units Affected:</span> {recall.potential_units_affected.toLocaleString()}</span>}
@@ -81,7 +81,7 @@ export default function RecallDetailModal({ recall, onClose }: Props) {
         </div>
 
         {/* Body */}
-        <div className="flex-1 overflow-y-auto px-6 py-5 space-y-5">
+        <div className="flex-1 overflow-y-auto px-4 sm:px-6 py-4 sm:py-5 space-y-5">
           <Section title="Defect Description" content={recall.defect_description} />
           <Section title="Consequence" content={recall.consequence_description} />
           <Section title="Corrective Action" content={recall.corrective_action} />
@@ -89,7 +89,7 @@ export default function RecallDetailModal({ recall, onClose }: Props) {
         </div>
 
         {/* Footer */}
-        <div className="px-6 py-4 border-t border-gray-100 flex justify-end">
+        <div className="px-4 sm:px-6 py-4 border-t border-gray-100 flex justify-end">
           <button
             onClick={onClose}
             className="px-4 py-2 rounded-lg text-sm font-medium text-white transition-colors hover:opacity-90"

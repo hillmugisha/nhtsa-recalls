@@ -17,12 +17,12 @@ export default function Pagination({ page, totalPages, count, pageSize = 50, onP
   for (let i = start; i <= end; i++) pageNumbers.push(i)
 
   return (
-    <div className="flex items-center justify-between px-4 py-3 border-t border-gray-200 bg-white text-sm">
-      <span className="text-gray-500">
+    <div className="flex flex-col sm:flex-row items-center justify-between gap-2 px-4 py-3 border-t border-gray-200 bg-white text-sm">
+      <span className="text-gray-500 text-xs sm:text-sm">
         Showing {from}–{to} of {count.toLocaleString()} recalls
       </span>
 
-      <div className="flex items-center gap-1">
+      <div className="flex items-center gap-1 flex-wrap justify-center">
         <button
           onClick={() => onPageChange(page - 1)}
           disabled={page <= 1}

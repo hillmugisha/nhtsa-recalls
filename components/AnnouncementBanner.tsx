@@ -33,10 +33,10 @@ export default function AnnouncementBanner() {
       className="flex items-center justify-between px-4 py-2 text-sm font-medium text-gray-900"
       style={{ backgroundColor: 'var(--yellow)' }}
     >
-      <span className="flex-1 text-center">
+      <span className="flex-1 text-center text-xs sm:text-sm">
         NHTSA recall data is refreshed daily.
         {lastSynced && (
-          <span className="ml-2 font-normal">Last refreshed: <span className="font-semibold">{lastSynced}</span></span>
+          <span className="ml-2 font-normal hidden sm:inline">Last refreshed: <span className="font-semibold">{lastSynced}</span></span>
         )}
       </span>
       <button
