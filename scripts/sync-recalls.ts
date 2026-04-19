@@ -47,7 +47,6 @@ function mapRecall(r: NHTSARecall) {
     component_name:           r.Component ?? null,
     manufacturer_name:        r.Manufacturer ?? null,
     recall_type:              r.RecallType ?? null,
-    potential_units_affected: r.PotentialNumberofUnitsAffected ?? null,
     owner_notification_date:  parseDate(r.OwnerNotificationDate),
     influenced_by:            r.InfluencedBy ?? null,
     report_received_date:     parseDate(r.ReportReceivedDate),
@@ -55,8 +54,8 @@ function mapRecall(r: NHTSARecall) {
     consequence_description:  r.Consequence ?? null,
     corrective_action:        r.Remedy ?? null,
     notes:                    r.Notes ?? null,
-    do_not_drive:             r.DoNotDriveAdvisory ?? null,
-    park_outside:             r.ParkOutsideAdvisory ?? null,
+    do_not_drive:             r.parkIt ?? null,
+    park_outside:             r.parkOutSide ?? null,
     synced_at:                new Date().toISOString(),
   }
 }
@@ -92,7 +91,7 @@ async function main() {
 
         const { error } = await supabase
           .from('recalls')
-          .upsert(rows, { onConflict: 'campno' })
+          .upsert(rows, { onConflict: 'campno,model_year' })
 
         if (error) {
           console.error(`  Error upserting ${year}/${make}/${model}:`, error.message)

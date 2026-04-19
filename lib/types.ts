@@ -52,11 +52,10 @@ export interface NHTSARecall {
   Make: string
   Model: string
   Manufacturer?: string
-  PotentialNumberofUnitsAffected?: number
   OwnerNotificationDate?: string
   RecallType?: string
-  DoNotDriveAdvisory?: boolean
-  ParkOutsideAdvisory?: boolean
+  parkIt?: boolean
+  parkOutSide?: boolean
   MfgCampaignNumber?: string
   InfluencedBy?: string
 }

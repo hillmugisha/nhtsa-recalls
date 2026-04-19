@@ -32,7 +32,6 @@ function mapRecall(r: NHTSARecall) {
     component_name:           r.Component ?? null,
     manufacturer_name:        r.Manufacturer ?? null,
     recall_type:              r.RecallType ?? null,
-    potential_units_affected: r.PotentialNumberofUnitsAffected ?? null,
     owner_notification_date:  parseDate(r.OwnerNotificationDate),
     influenced_by:            r.InfluencedBy ?? null,
     report_received_date:     parseDate(r.ReportReceivedDate),
@@ -40,8 +39,8 @@ function mapRecall(r: NHTSARecall) {
     consequence_description:  r.Consequence ?? null,
     corrective_action:        r.Remedy ?? null,
     notes:                    r.Notes ?? null,
-    do_not_drive:             r.DoNotDriveAdvisory ?? null,
-    park_outside:             r.ParkOutsideAdvisory ?? null,
+    do_not_drive:             r.parkIt ?? null,
+    park_outside:             r.parkOutSide ?? null,
     synced_at:                new Date().toISOString(),
   }
 }
@@ -68,7 +67,7 @@ export async function POST() {
             if (recalls.length === 0) continue
 
             const rows = recalls.map(mapRecall)
-            const { error } = await supabase.from('recalls').upsert(rows, { onConflict: 'campno' })
+            const { error } = await supabase.from('recalls').upsert(rows, { onConflict: 'campno,model_year' })
             if (!error) totalUpserted += rows.length
           } catch {
             // Skip individual failures and continue
